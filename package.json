@@ -1,5 +1,5 @@
 {
-  "name": "electron-react",
+  "name": "electron-react-scripts",
   "version": "0.1.0",
   "main": "electron/main.js",
   "private": true,

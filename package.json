@@ -1,0 +1,57 @@
+{
+  "name": "electron-react",
+  "version": "0.1.0",
+  "main": "electron/main.js",
+  "private": true,
+  "homepage": "./",
+  "dependencies": {
+    "electron-is-dev": "^1.1.0",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-scripts": "3.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build && cp -r electron/. build/electron && electron-builder build --c.extraMetadata.main=build/electron/main.js --publish never",
+    "build-win": "react-scripts build && cp -r electron/. build/electron && electron-builder build --c.extraMetadata.main=build/electron/main.js --publish never",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "dev": "concurrently \"BROWSER=none npm start\" \"wait-on http://localhost:3000 && electron .\""
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^5.0.0",
+    "electron": "^6.0.12",
+    "electron-builder": "^21.2.0",
+    "wait-on": "^3.3.0"
+  },
+  "build": {
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "linux": {
+      "category": "Utility"
+    },
+    "win": {
+      "target": [
+        "portable",
+        "msi"
+      ]
+    }
+  }
+}
